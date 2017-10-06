@@ -1,19 +1,19 @@
 HP39AscD 4 MATHRANDSEED(Time):
 0\|>S:
 10\|>T:
-INPUT M;"MENU";"GAME";"1:+;2:-;3:++;4:--;5:\.x;0:ALL";0: 
+INPUT M;"MENU";"CLASS:";"1:+; 2:-; 3:++; 4:--; 5:\.x; 6:\:-; 0:ALL";0: 
+TRUNCATE(Time,2)\|>F:
 FOR I=1 TO T STEP 1;
  IF M==0 THEN
-  INT(RANDOM*5)+1\|>C:
+  INT(RANDOM*6)+1\|>C:
  ELSE
   M\|>C:
  END:
  CASE
   IF C==1 THEN
-   INT(RANDOM*101)\|>A:
-   INT(RANDOM*101)\|>B: 
-   INPUT R;"MATH";A"+"B;I":"T;0:
-   IF R==A+B THEN
+   INT(RANDOM*1001)\|>A:
+   INT(RANDOM*1001)\|>B: 
+   INPUT R;"MATH";A"+"B;I":"T;0:    IF R==A+B THEN
     S+1\|>S:
     MSGBOX "YES":
    ELSE
@@ -22,8 +22,8 @@ FOR I=1 TO T STEP 1;
    END
   END
   IF C==2 THEN
-   INT(RANDOM*101)\|>X:
-   INT(RANDOM*101)\|>Y:
+   INT(RANDOM*1001)\|>X:
+   INT(RANDOM*1001)\|>Y:
    MAX(X,Y)\|>A:
    MIN(X,Y)\|>B:
    INPUT R;"MATH";A"-"B;I":"T;0:
@@ -63,17 +63,38 @@ FOR I=1 TO T STEP 1;
    END
   END
   IF C==5 THEN
-   INT(RANDOM*10)\|>A:
-   INT(RANDOM*10)\|>B:
+   INT(RANDOM*11)\|>A:
+   INT(RANDOM*11)\|>B:
    INPUT R;"MATH";A"\.x"B;I":"T;0:
    IF R==A*B THEN
     S+1\|>S:
     MSGBOX "YES":
    ELSE
-    BEEP 120;0.5:
+    BEEP 1200;0.5:
     MSGBOX A"\.x"B"="A*B: 
   END
  END
+ IF C== 6 THEN
+  INT(RANDOM*18)+1\|>A:
+  INT(RANDOM*18)+1\|>B:
+  INPUT R;"MATH";A*B"\:-"B;I":"T;0:
+ IF R==A THEN
+  S+1\|>S:
+  MSGBOX "YES":
+ ELSE
+  BEEP 1200;0.5:
+  MSGBOX A*B"\:-"B"="A:
+ END
+END 
 END:
 END:
-MSGBOX "SCORE:"S*10 
+MSGBOX "CLS:"M",SCORE:"S*10:
+SIZE(M0)\|>L0:
+IF L0(2) \=/ 5 THEN
+ [[0,0,0,0,0]]\|>M0:
+END:
+IF L0(1) > 50 THEN
+ DELROW M0;L0(1):
+END:
+TRUNCATE(Time,2)\|>E:
+ADDROW M0;[TRUNCATE(DATE,2),M,S*10,F,E];1: 
