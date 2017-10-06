@@ -1,79 +1,264 @@
 HP39AscD 7 MIXMATHRANDSEED(Time):
 0\|>S:
 10\|>T:
-INPUT M;"MENU";"GAME";"1:+;2:-;3:++;4:--;5:\.x;0:ALL";0: 
+10\|>L:
+TRUNCATE(Time,2)\|>F:
 FOR I=1 TO T STEP 1;
- IF M==0 THEN
-  INT(RANDOM*5)+1\|>C:
- ELSE
-  M\|>C:
- END:
+ INT(RANDOM*16)+1\|>O:
  CASE
-  IF C==1 THEN
-   INT(RANDOM*101)\|>A:
-   INT(RANDOM*101)\|>B: 
-   INPUT R;"MATH";A"+"B;I":"T;0:
-   IF R==A+B THEN
-    S+1\|>S:
-    MSGBOX "YES":
-   ELSE
-    BEEP 1200;0.5:
-    MSGBOX "NO,"A"+"B"="A+B:
-   END
-  END
-  IF C==2 THEN
-   INT(RANDOM*101)\|>X:
-   INT(RANDOM*101)\|>Y:
-   MAX(X,Y)\|>A:
-   MIN(X,Y)\|>B:
-   INPUT R;"MATH";A"-"B;I":"T;0:
-   IF R==A-B THEN
-    S+1\|>S:
-    MSGBOX "YES":
-   ELSE
-    BEEP 1200;0.5:
-    MSGBOX "NO,"A"-"B"="A-B: 
-   END:
-  END
-  IF C==3 THEN
+  IF O==1 THEN
    INT(RANDOM*100)\|>A:
-   INT(RANDOM*51)\|>B:
-   INT(RANDOM*51)\|>D:
-   INPUT R;"MATH";A"+"B"+"D;I":"T;0:
-   IF R==A+B+D THEN
+   INT(RANDOM*L)\|>B:
+   INT(RANDOM*L)\|>C:
+   INPUT R;"MATH";A"+"B"\.x"C;I":"T;0:
+   IF R==A+B*C THEN
     S+1\|>S:
     MSGBOX "YES":
    ELSE
     BEEP 1200;0.5:
-    MSGBOX "NO,"A"+"B"+"D"="A+B+D:
-   END 
-  END
-  IF C==4 THEN
-   INT(RANDOM*50)\|>A:
-   INT(RANDOM*50)\|>B:
-   INT(RANDOM*50)\|>D:
-   A+B+D\|>E:
-   INPUT R;"MATH";E"-"D"-"B;I":"T;0:
-   IF R==A THEN
-    S+1\|>S:
-    MSGBOX "YES":
-   ELSE
-    BEEP 1200;0.5:
-    MSGBOX "NO,"E"-"D"-"B"="A:
+    MSGBOX "NO,"A"+"B"\.x"C"="A+B*C:
    END
   END
-  IF C==5 THEN
-   INT(RANDOM*10)\|>A:
-   INT(RANDOM*10)\|>B:
-   INPUT R;"MATH";A"\.x"B;I":"T;0:
-   IF R==A*B THEN
+
+  IF O==2 THEN
+   INT(RANDOM*100)\|>A:
+   INT(RANDOM*L)\|>G:
+   INT(RANDOM*L)\|>C:
+   G*C\|>B:
+   INPUT R;"MATH";A"+"B"\:-"C;I":"T;0:
+   IF R==A+B/C THEN
     S+1\|>S:
     MSGBOX "YES":
    ELSE
-    BEEP 120;0.5:
-    MSGBOX A"\.x"B"="A*B: 
+    BEEP 1200;0.5:
+    MSGBOX "NO,"A"+"B"\:-"C"="A+B/C:
+   END
   END
- END
+
+  IF O==3 THEN
+   INT(RANDOM*100)\|>A:
+   INT(RANDOM*L)\|>B:
+   INT(RANDOM*L)\|>C:
+   MAX(A,B*C)\|>A:
+   INPUT R;"MATH";A"-"B"\.x"C;I":"T;0:
+   IF R==A-B*C THEN
+    S+1\|>S:
+    MSGBOX "YES":
+   ELSE
+    BEEP 1200;0.5:
+    MSGBOX "NO,"A"-"B"\.x"C"="A-B*C:
+   END
+  END
+
+  IF O==4 THEN
+   INT(RANDOM*100)\|>A:
+   INT(RANDOM*L)\|>G:
+   INT(RANDOM*L)\|>C:
+   G*C\|>B:
+   MAX(A,B/C)\|>A:
+   INPUT R;"MATH";A"-"B"\:-"C;I":"T;0:
+   IF R==A-B/C THEN
+    S+1\|>S:
+    MSGBOX "YES":
+   ELSE
+    BEEP 1200;0.5:
+    MSGBOX "NO,"A"-"B"\:-"C"="A-B/C:
+   END
+  END
+
+  IF O==5 THEN
+   INT(RANDOM*L)\|>A:
+   INT(RANDOM*L)\|>B:
+   INT(RANDOM*100)\|>C:
+   INPUT R;"MATH";A"\.x"B"+"C;I":"T;0:
+   IF R==A*B+C THEN
+    S+1\|>S:
+    MSGBOX "YES":
+   ELSE
+    BEEP 1200;0.5:
+    MSGBOX "NO,"A"\.x"B"+"C"="A*B+C:
+   END
+  END
+
+  IF O==6 THEN
+   INT(RANDOM*L)\|>A:
+   INT(RANDOM*L)\|>B:
+   INT(RANDOM*100)\|>C:
+   MIN(C,A*B)\|>C:
+   INPUT R;"MATH";A"\.x"B"-"C;I":"T;0:
+   IF R==A*B-C THEN
+    S+1\|>S:
+    MSGBOX "YES":
+   ELSE
+    BEEP 1200;0.5:
+    MSGBOX "NO,"A"\.x"B"-"C"="A*B-C:
+   END
+  END
+
+  IF O==7 THEN
+   INT(RANDOM*L)\|>B:
+   INT(RANDOM*L)\|>G:
+   INT(RANDOM*100)\|>C:
+   B*G\|>A:
+   INPUT R;"MATH";A"\:-"B"+"C;I":"T;0:
+   IF R==A/B+C THEN
+    S+1\|>S:
+    MSGBOX "YES":
+   ELSE
+    BEEP 1200;0.5:
+    MSGBOX "NO,"A"\:-"B"+"C"="A/B+C:
+   END
+  END
+
+  IF O==8 THEN
+   INT(RANDOM*L)\|>B:
+   INT(RANDOM*L)\|>C:
+   INT(RANDOM*L)\|>G:
+   B*G\|>A:
+   MIN(A/B,C)\|>C:
+   INPUT R;"MATH";A"\:-"B"-"C;I":"T;0:
+   IF R==A/B-C THEN
+    S+1\|>S:
+    MSGBOX "YES":
+   ELSE
+    BEEP 1200;0.5:
+    MSGBOX "NO,"A"\:-"B"-"C"="A/B-C:
+   END
+  END
+
+  IF O==9 THEN
+   INT(RANDOM*L)\|>A:
+   INT(RANDOM*L)\|>B:
+   INT(RANDOM*L)\|>C:
+   INPUT R;"MATH";"("A"+"B")\.x"C;I":"T;0:
+   IF R==(A+B)*C THEN
+    S+1\|>S:
+    MSGBOX "YES":
+   ELSE
+    BEEP 1200;0.5:
+    MSGBOX "NO,("A"+"B")\.x"C"="(A+B)*C:
+   END
+  END
+
+  IF O==10 THEN
+   INT(RANDOM*L)\|>C:
+   INT(RANDOM*L)\|>G:
+   INT(RANDOM*L)\|>H:
+   G*C\|>A:
+   H*C\|>B:
+   
+   INPUT R;"MATH";"("A"+"B")\:-"C;I":"T;0:
+   IF R==(A+B)/C THEN
+    S+1\|>S:
+    MSGBOX "YES":
+   ELSE
+    BEEP 1200;0.5:
+    MSGBOX "NO,("A"+"B")\:-"C"="(A+B)/C:
+   END
+  END
+
+  IF O==11 THEN
+   INT(RANDOM*L)\|>G:
+   INT(RANDOM*L)\|>H:
+   INT(RANDOM*L)\|>C:
+   MAX(G,H)*C\|>A:
+   MIN(G,H)*C\|>B:
+   INPUT R;"MATH";"("A"-"B")\.x"C;I":"T;0:
+   IF R==(A-B)*C THEN
+    S+1\|>S:
+    MSGBOX "YES":
+   ELSE
+    BEEP 1200;0.5:
+    MSGBOX "NO,("A"-"B")\.x"C"="(A-B)*C:
+   END
+  END
+
+  IF O==12 THEN
+   INT(RANDOM*L)\|>G:
+   INT(RANDOM*L)\|>H:
+   INT(RANDOM*L)\|>C:
+   MAX(G,H)*C\|>A:
+   MIN(G,H)*C\|>B:
+   INPUT R;"MATH";"("A"-"B")\:-"C;I":"T;0:
+   IF R==(A-B)/C THEN
+    S+1\|>S:
+    MSGBOX "YES":
+   ELSE
+    BEEP 1200;0.5:
+    MSGBOX "NO,("A"-"B")\:-"C"="(A-B)/C:
+   END
+  END
+
+  IF O==13 THEN
+   INT(RANDOM*L)\|>A:
+   INT(RANDOM*L)\|>B:
+   INT(RANDOM*L)\|>C:
+   INPUT R;"MATH";A"\.x("B"+"C")";I":"T;0:
+   IF R==A*(B+C) THEN
+    S+1\|>S:
+    MSGBOX "YES":
+   ELSE
+    BEEP 1200;0.5:
+    MSGBOX "NO,"A"\.x("B"+"C")="A*(B+C):
+   END
+  END
+
+  IF O==14 THEN
+   INT(RANDOM*L)\|>A:
+   INT(RANDOM*L)\|>G:
+   INT(RANDOM*L)\|>H:
+   MAX(G,H)*A\|>B:
+   MIN(G,H)*A\|>C:
+   INPUT R;"MATH";A"\.x("B"-"C")";I":"T;0:
+   IF R==A*(B-C) THEN
+    S+1\|>S:
+    MSGBOX "YES":
+   ELSE
+    BEEP 1200;0.5:
+    MSGBOX "NO,"A"\.x("B"-"C")="A*(B-C):
+   END
+  END
+
+  IF O==15 THEN
+   INT(RANDOM*L)\|>G:
+   INT(RANDOM*L)\|>B:
+   INT(RANDOM*L)\|>C:
+   B*G+C*G\|>A:
+   INPUT R;"MATH";A"\:-("B"+"C")";I":"T;0:
+   IF R==A/(B+C) THEN
+    S+1\|>S:
+    MSGBOX "YES":
+   ELSE
+    BEEP 1200;0.5:
+    MSGBOX "NO,"A"\:-("B"+"C")="A/(B+C):
+   END
+  END
+
+  IF O==16 THEN
+   INT(RANDOM*L)\|>A:
+   INT(RANDOM*L)\|>G:
+   INT(RANDOM*L)\|>H:
+   MAX(G,H)\|>B:
+   MIN(G,H)\|>C:
+   A*(B-C)\|>A:
+   INPUT R;"MATH";A"\:-("B"-"C")";I":"T;0:
+   IF R==A/(B-C) THEN
+    S+1\|>S:
+    MSGBOX "YES":
+   ELSE
+    BEEP 1200;0.5:
+    MSGBOX "NO,"A"\:-("B"-"C")="A/(B-C):
+   END
+  END
+ END:
 END:
+MSGBOX "SCORE:"S*10
+SIZE(M0)\|>L0:
+IF L0(2) \=/ 5 THEN
+ [[0,0,0,0,0]]\|>M0:
 END:
-MSGBOX "SCORE:"S*10 
+IF L0(1) > 50 THEN
+ DELROW M0;L0(1):
+END:
+TRUNCATE(Time,2)\|>E:
+ADDROW M0;[TRUNCATE(DATE,2),99,S*10,F,E];1:
