@@ -23,7 +23,7 @@ FOR I=1 TO T STEP 1;
   IF O==2 THEN
    INT(RANDOM*100)\|>A:
    INT(RANDOM*L)\|>G:
-   INT(RANDOM*L)\|>C:
+   INT(RANDOM*L)+1\|>C:
    G*C\|>B:
    INPUT R;"MATH";A"+"B"\:-"C;I":"T;0:
    IF R==A+B/C THEN
@@ -53,7 +53,7 @@ FOR I=1 TO T STEP 1;
   IF O==4 THEN
    INT(RANDOM*100)\|>A:
    INT(RANDOM*L)\|>G:
-   INT(RANDOM*L)\|>C:
+   INT(RANDOM*L)+1\|>C:
    G*C\|>B:
    MAX(A,B/C)\|>A:
    INPUT R;"MATH";A"-"B"\:-"C;I":"T;0:
@@ -96,7 +96,7 @@ FOR I=1 TO T STEP 1;
   END
 
   IF O==7 THEN
-   INT(RANDOM*L)\|>B:
+   INT(RANDOM*L)+1\|>B:
    INT(RANDOM*L)\|>G:
    INT(RANDOM*100)\|>C:
    B*G\|>A:
@@ -111,7 +111,7 @@ FOR I=1 TO T STEP 1;
   END
 
   IF O==8 THEN
-   INT(RANDOM*L)\|>B:
+   INT(RANDOM*L)+1\|>B:
    INT(RANDOM*L)\|>C:
    INT(RANDOM*L)\|>G:
    B*G\|>A:
@@ -141,7 +141,7 @@ FOR I=1 TO T STEP 1;
   END
 
   IF O==10 THEN
-   INT(RANDOM*L)\|>C:
+   INT(RANDOM*L)+1\|>C:
    INT(RANDOM*L)\|>G:
    INT(RANDOM*L)\|>H:
    G*C\|>A:
@@ -174,7 +174,7 @@ FOR I=1 TO T STEP 1;
   END
 
   IF O==12 THEN
-   INT(RANDOM*L)\|>G:
+   INT(RANDOM*L)+1\|>G:
    INT(RANDOM*L)\|>H:
    INT(RANDOM*L)\|>C:
    MAX(G,H)*C\|>A:
@@ -221,8 +221,8 @@ FOR I=1 TO T STEP 1;
 
   IF O==15 THEN
    INT(RANDOM*L)\|>G:
-   INT(RANDOM*L)\|>B:
-   INT(RANDOM*L)\|>C:
+   INT(RANDOM*L)+1\|>B:
+   INT(RANDOM*L)+1\|>C:
    B*G+C*G\|>A:
    INPUT R;"MATH";A"\:-("B"+"C")";I":"T;0:
    IF R==A/(B+C) THEN
@@ -238,7 +238,7 @@ FOR I=1 TO T STEP 1;
    INT(RANDOM*L)\|>A:
    INT(RANDOM*L)\|>G:
    INT(RANDOM*L)\|>H:
-   MAX(G,H)\|>B:
+   MAX(G,H)+1\|>B:
    MIN(G,H)\|>C:
    A*(B-C)\|>A:
    INPUT R;"MATH";A"\:-("B"-"C")";I":"T;0:
