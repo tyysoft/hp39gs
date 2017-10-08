@@ -174,9 +174,9 @@ FOR I=1 TO T STEP 1;
   END
 
   IF O==12 THEN
-   INT(RANDOM*L)+1\|>G:
+   INT(RANDOM*L)\|>G:
    INT(RANDOM*L)\|>H:
-   INT(RANDOM*L)\|>C:
+   INT(RANDOM*L)+1\|>C:
    MAX(G,H)*C\|>A:
    MIN(G,H)*C\|>B:
    INPUT R;"MATH";"("A"-"B")\:-"C;I":"T;0:
